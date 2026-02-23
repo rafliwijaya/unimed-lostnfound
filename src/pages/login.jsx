@@ -53,6 +53,9 @@ export default function Login() {
 
         <br /><br />
 
+        <button onClick={() => navigate("/register")}>
+          Belum punya akun?
+        </button>
         <button type="submit" disabled={loading}>
           {loading ? "Loading..." : "Login"}
         </button>

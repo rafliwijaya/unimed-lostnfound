@@ -87,6 +87,9 @@ export default function Register() {
 
         <br /><br />
 
+        <button onClick={() => navigate("/")}>
+          Sudah punya akun?
+        </button>
         <button type="submit" disabled={loading}>
           {loading ? "Loading..." : "Register"}
         </button>
