@@ -40,7 +40,20 @@ export default function Register() {
       return
     }
 
-    navigate("/dashboard")
+    const user = data.user
+
+    const { error: insertError } = await supabase.from("users").insert([{
+      id: user.id,
+      role: "user"
+    }])
+
+    if (insertError) {
+      alert(insertError.message)
+    } else {
+      alert("Register berhasil!")
+    }
+
+    navigate("/")
   }
 
   return (
@@ -59,7 +72,7 @@ export default function Register() {
         <br /><br />
 
         <input
-          type="text"
+          type="tel"
           placeholder="Phone Number"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
