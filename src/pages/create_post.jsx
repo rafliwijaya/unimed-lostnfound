@@ -63,6 +63,11 @@ function createPost() {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         />
+        <input type="text"
+        placeholder="Kategori"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        />
       </form>
       </div>
 
