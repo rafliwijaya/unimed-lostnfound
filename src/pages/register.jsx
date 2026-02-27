@@ -53,7 +53,7 @@ export default function Register() {
       alert("Register berhasil!")
     }
 
-    navigate("/")
+    navigate("/login")
   }
 
   return (
