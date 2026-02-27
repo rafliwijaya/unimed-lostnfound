@@ -14,7 +14,7 @@ function createPost() {
     const [location, setLocation] = useState("")
     const [error, setError] = useState("")
 
-    const handleRegister = async (e) => {
+    const handleCreatePost = async (e) => {
         e.preventDefault()
 
         const { data: { user }, error: userError } = await supabase.auth.getUser();
@@ -51,7 +51,22 @@ function createPost() {
     return (
         <div style={{ maxWidth: "400px", margin: "100px auto" }}>
       <h2>Register</h2>
+
+      <form onSubmit={handleCreatePost}>
+        <input type="text"
+        placeholder="Judul Barang"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        />
+        <input type="text"
+        placeholder="Deskripsi"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        />
+      </form>
       </div>
+
+      
     )
 
 }
