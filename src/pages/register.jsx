@@ -100,7 +100,7 @@ export default function Register() {
 
         <br /><br />
 
-        <button onClick={() => navigate("/")}>
+        <button onClick={() => navigate("/login")}>
           Sudah punya akun?
         </button>
         <button type="submit" disabled={loading}>
