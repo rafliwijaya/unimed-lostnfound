@@ -3,6 +3,7 @@ import Register from "./pages/register"
 import Login from "./pages/login"
 import Dashboard from "./pages/dashboard"
 import ProtectedRoute from "./pages/protectedroute"
+import CreatePost from "./pages/create_post"
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/create-post" element={<CreatePost />} />
 
       <Route
         path="/dashboard"

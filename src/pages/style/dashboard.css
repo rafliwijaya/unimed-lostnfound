@@ -1,6 +1,14 @@
+:root {
+    --primary: #87DB20;
+    --secondary: #A935EB;
+    --text: #1A1110;
+    --background: #fffff0;
+    --antagonist: #a91c3d;
+}
+
 .btn-logout {
-    background-color: #a91c3d;
-    color: #fff;
+    background-color: var(--antagonist);
+    color: var(--background);
     padding: .5rem 1.2rem;
     border: none;
     border-radius: 5px;
