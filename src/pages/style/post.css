@@ -326,9 +326,13 @@
   font-weight: 400;
 }
 
-.image-badge span {
+.image-badge p span {
     font-weight: 600;
     color: rgba(26,17,16,0.85);
+}
+
+.image-badge h3 span {
+    /* color: var(--primary); */
 }
 
 .panduan-post {
@@ -344,7 +348,11 @@
     color: rgba(26,17,16,0.65);
 }
 
-.panduan-post span{
+.panduan-post span {
+    color: var(--primary);
+}
+
+.panduan-post p span{
  font-weight: 600;   
  color: var(--text);
 }

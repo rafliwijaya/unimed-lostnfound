@@ -19,9 +19,16 @@ export default function Dashboard() {
   }
 
   const fetchPosts = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      console.error("User tidak ditemukan")
+      return
+    }
     const { data, error } = await supabase
       .from("posts")
       .select("*")
+      .eq("user_id", user.id)
       .order("created_at", { ascending: false })
 
     if (error) {
@@ -33,22 +40,22 @@ export default function Dashboard() {
   }
 
   const fetchUserData = async () => {
-  const { data: { user } } = await supabase.auth.getUser()
+    const { data: { user } } = await supabase.auth.getUser()
 
-  if (user) {
-    const { data, error } = await supabase
-      .from("users")
-      .select("full_name")
-      .eq("id", user.id)
-      .single()
+    if (user) {
+      const { data, error } = await supabase
+        .from("users")
+        .select("full_name")
+        .eq("id", user.id)
+        .single()
 
-    if (error) {
-      console.error(error.message)
-    } else {
-      setFullName(data.full_name)
+      if (error) {
+        console.error(error.message)
+      } else {
+        setFullName(data.full_name)
+      }
     }
   }
-}
 
   useEffect(() => {
     fetchPosts()
@@ -122,7 +129,7 @@ export default function Dashboard() {
         <div className="dashboard-topbar">
           <div>
             <h1>Dashboard</h1>
-            <p className="dashboard-topbar-subtitle">Kelola semua laporan barang hilang & temuan</p>
+            <p className="dashboard-topbar-subtitle">Kelola semua laporan barang hilang & temuan milikmu</p>
           </div>
           <button className="btn-create" onClick={() => navigate("/create-post")}>
             <i className="bx bx-plus"></i>

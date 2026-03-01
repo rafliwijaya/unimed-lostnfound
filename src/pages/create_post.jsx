@@ -127,9 +127,9 @@ function CreatePost() {
                   required
                 >
                   <option value="" disabled>Pilih Status</option>
-                  <option value="Open">Open</option>
-                  <option value="Claimed">Claimed</option>
-                  <option value="Resolved">Resolved</option>
+                  <option value="open">Open</option>
+                  <option value="claimed">Claimed</option>
+                  <option value="resolved">Resolved</option>
                 </select>
                 <i className="bx bx-chevron-down select-arrow"></i>
               </div>
@@ -144,8 +144,8 @@ function CreatePost() {
                   required
                 >
                   <option value="" disabled>Pilih Type</option>
-                  <option value="Lost">Lost / Kehilangan</option>
-                  <option value="Found">Found / Ditemukan</option>
+                  <option value="lost">Lost / Kehilangan</option>
+                  <option value="found">Found / Ditemukan</option>
                 </select>
                 <i className="bx bx-chevron-down select-arrow"></i>
               </div>
@@ -190,13 +190,13 @@ function CreatePost() {
           <img src={postImg} alt="Post visual" />
           <div className="image-overlay"></div>
           <div className="image-badge">
-            <h3>Temukan & Laporkan</h3>
+            <h3>Temukan & <span>Laporkan</span></h3>
             <p>Isi formulir nya dulu ya, semakin detail informasi nya semakin baik. <span>Panduan Postingannya</span> ada di bawah.</p>
           </div>
         </div>
 
         <div className="panduan-post">
-          <h3>Panduan Postingan</h3>
+          <h3>Panduan <span>Postingan</span></h3>
           <p><span>Judul Barang</span>: Informasi utama barang Mis. dompet, kunci motor, ktp, tas, charger, jaket dsb.</p>
           <p><span>Deskripsi</span>: Berisi informasi atau spesifikasi lengkap dari barang bersangkutan. Mis. Dompet berisi uang tunai 200 ribu dengan ktp bernama Fulan Al Fulani.</p>
           <p><span>Kategori</span>: Mis. Elektronik, dokumen, tas, buku, pakaian, aksesoris dsb.</p>
