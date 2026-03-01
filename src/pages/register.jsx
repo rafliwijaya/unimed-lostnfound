@@ -42,9 +42,18 @@ export default function Register() {
 
     const user = data.user
 
+    if (!user) {
+      setError("User tidak ditemukan")
+      setLoading(false)
+      return
+    }
+
+
     const { error: insertError } = await supabase.from("users").insert([{
       id: user.id,
-      role: "user"
+      full_name: name,
+      phone: phone,
+      role: "user",
     }])
 
     if (insertError) {

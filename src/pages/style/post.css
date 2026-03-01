@@ -51,6 +51,10 @@
   letter-spacing: -0.5px;
 }
 
+.create-post-form-side span {
+    color: var(--primary);
+}
+
 .create-post-subtitle {
   font-size: 0.875rem;
   color: rgba(26, 17, 16, 0.5);
@@ -319,8 +323,32 @@
   font-size: 0.8rem;
   color: rgba(26,17,16,0.55);
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
 }
+
+.image-badge span {
+    font-weight: 600;
+    color: rgba(26,17,16,0.85);
+}
+
+.panduan-post {
+    padding: 1rem 2rem;
+    background-color: var(--background);
+    border: 1px solid rgba(26,17,16,0.07);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.panduan-post p {
+    font-size: 0.8rem;
+    color: rgba(26,17,16,0.65);
+}
+
+.panduan-post span{
+ font-weight: 600;   
+ color: var(--text);
+}
+
 
 /* ── Error message ── */
 .create-post-error {

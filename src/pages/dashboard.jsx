@@ -11,6 +11,7 @@ export default function Dashboard() {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [fullName, setFullName] = useState("")
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -31,8 +32,27 @@ export default function Dashboard() {
     setLoading(false)
   }
 
+  const fetchUserData = async () => {
+  const { data: { user } } = await supabase.auth.getUser()
+
+  if (user) {
+    const { data, error } = await supabase
+      .from("users")
+      .select("full_name")
+      .eq("id", user.id)
+      .single()
+
+    if (error) {
+      console.error(error.message)
+    } else {
+      setFullName(data.full_name)
+    }
+  }
+}
+
   useEffect(() => {
     fetchPosts()
+    fetchUserData()
   }, [])
 
   const closeSidebar = () => setSidebarOpen(false)
@@ -63,7 +83,7 @@ export default function Dashboard() {
             <i className="bx bx-user"></i>
           </div>
           <div className="sidebar-profile-info">
-            <div className="sidebar-profile-name">user.id</div>
+            <div className="sidebar-profile-name">{fullName}</div>
             <div className="sidebar-profile-label">Lihat Profil</div>
           </div>
         </div>

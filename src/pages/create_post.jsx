@@ -78,7 +78,7 @@ function CreatePost() {
       <div className="create-post-container">
 
         <div className="create-post-form-side">
-          <h2>Buat Post</h2>
+          <h2>Buat <span>Post</span></h2>
           <p className="create-post-subtitle">Laporkan barang hilang atau temuan kamu</p>
 
           {error && <div className="create-post-error">{error}</div>}
@@ -111,7 +111,7 @@ function CreatePost() {
               <i className="bx bx-category-alt input-icon"></i>
               <input
                 type="text"
-                placeholder="Kategori"
+                placeholder="Kategori (Elektronik, Dokumen, Tas..)"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 required
@@ -191,8 +191,19 @@ function CreatePost() {
           <div className="image-overlay"></div>
           <div className="image-badge">
             <h3>Temukan & Laporkan</h3>
-            <p>Isi formulir nya dulu ya, semakin detail informasi nya semakin baik</p>
+            <p>Isi formulir nya dulu ya, semakin detail informasi nya semakin baik. <span>Panduan Postingannya</span> ada di bawah.</p>
           </div>
+        </div>
+
+        <div className="panduan-post">
+          <h3>Panduan Postingan</h3>
+          <p><span>Judul Barang</span>: Informasi utama barang Mis. dompet, kunci motor, ktp, tas, charger, jaket dsb.</p>
+          <p><span>Deskripsi</span>: Berisi informasi atau spesifikasi lengkap dari barang bersangkutan. Mis. Dompet berisi uang tunai 200 ribu dengan ktp bernama Fulan Al Fulani.</p>
+          <p><span>Kategori</span>: Mis. Elektronik, dokumen, tas, buku, pakaian, aksesoris dsb.</p>
+          <p><span>Status</span>: Default <span>Open</span></p>
+          <p><span>Type</span>: <span>Lost</span> untuk barang kehilangan. <span>Found</span> untuk barang temuan. Jika anda menemukan barang maka gunakan opsi <span>Post</span></p>
+          <p><span>Lokasi</span>: Lokasi terakhir dari barang bersangkutan</p>
+          <p><span>Foto</span>: Visual dari barang yang hilang atau barang temuan</p>
         </div>
 
       </div>
