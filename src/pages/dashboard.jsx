@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { supabase } from "../lib/supabase"
 import { useEffect, useState } from "react"
 import "./style/style.css"
@@ -8,6 +8,8 @@ import "boxicons/css/boxicons.min.css"
 
 export default function Dashboard() {
   const navigate = useNavigate()
+  const location = useLocation()
+
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -84,8 +86,7 @@ export default function Dashboard() {
 
         <div
           className="sidebar-profile"
-          onClick={() => { navigate("/profil"); closeSidebar() }}
-        >
+          onClick={() => { navigate("/profil"); closeSidebar() }}>
           <div className="sidebar-avatar">
             <i className="bx bx-user"></i>
           </div>
@@ -100,7 +101,7 @@ export default function Dashboard() {
         <nav className="sidebar-nav">
 
           <button
-            className="sidebar-nav-item active"
+            className={`sidebar-nav-item ${location.pathname === "/dashboard" ? "active" : ""}`}
             onClick={() => { navigate("/dashboard"); closeSidebar() }}
           >
             <i className="bx bx-home-alt-2"></i>
@@ -108,7 +109,7 @@ export default function Dashboard() {
           </button>
 
           <button
-            className="sidebar-nav-item"
+            className={`sidebar-nav-item ${location.pathname === "/posts" ? "active" : ""}`}
             onClick={() => { navigate("/posts"); closeSidebar() }}
           >
             <i className="bx bx-collection"></i>
@@ -140,12 +141,12 @@ export default function Dashboard() {
         {loading ? (
           <div className="dashboard-state">
             <i className="bx bx-loader-alt bx-spin"></i>
-            <span>Memuat data...</span>
+            <span>Tunggu bentar ya...</span>
           </div>
         ) : posts.length === 0 ? (
           <div className="dashboard-state">
             <i className="bx bx-folder-open"></i>
-            <span>Belum ada post</span>
+            <span>Kamu belum post apa-apa. Buat post sekarang atau <a href="" onClick={() => navigate("/posts")}>jelajahi post</a></span>
           </div>
         ) : (
           <div className="post-grid">

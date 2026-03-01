@@ -182,7 +182,6 @@
   color: #6ab818;
 }
 
-/* ── Logout (bottom) ── */
 .sidebar-logout {
   margin-top: auto;
   margin-bottom: 3rem;
@@ -310,16 +309,17 @@
   color: rgba(135, 219, 32, 0.5);
 }
 
-/* ══════════════════════════════
-   POST GRID
-══════════════════════════════ */
+.dashboard-state span a {
+    color: var(--primary);
+    font-weight: 500;
+}
+
 .post-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* ── Post Card ── */
 .post-card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -361,6 +361,10 @@
   padding: 20px;
   position: relative;
   z-index: 1;
+}
+
+.post-card-body p span {
+    font-weight: 500;
 }
 
 .post-card-body h3 {
@@ -459,9 +463,6 @@
   z-index: 99;
 }
 
-/* ══════════════════════════════
-   RESPONSIVE
-══════════════════════════════ */
 @media (max-width: 900px) {
   .post-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

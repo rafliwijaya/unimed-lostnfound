@@ -4,6 +4,7 @@ import Login from "./pages/login"
 import Dashboard from "./pages/dashboard"
 import ProtectedRoute from "./pages/protectedroute"
 import CreatePost from "./pages/create_post"
+import Post from "./pages/post"
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
         element={
           <ProtectedRoute>
             <CreatePost />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/posts"
+        element={
+          <ProtectedRoute>
+            <Post />
           </ProtectedRoute>
         }
       />
