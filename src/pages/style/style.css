@@ -4,8 +4,21 @@
     --primary: #87DB20;
     --secondary: #A935EB;
     --text: #1A1110;
-    --background: #fffff0;
+    --background: #ffffff;
     --antagonist: #a91c3d;
+
+    --glass-bg: rgba(255, 255, 240, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(26, 17, 16, 0.08);
+  --glass-blur: blur(20px);
+  --input-bg: rgba(255, 255, 255, 0.55);
+  --input-border: rgba(135, 219, 32, 0.25);
+  --input-focus: rgba(135, 219, 32, 0.5);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 12px;
+
+  --sidebar-width: 240px;
 }
 
 * {
