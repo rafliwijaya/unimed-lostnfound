@@ -5,6 +5,7 @@ import Dashboard from "./pages/dashboard"
 import ProtectedRoute from "./pages/protectedroute"
 import CreatePost from "./pages/create_post"
 import Post from "./pages/post"
+import Profile from "./pages/profile"
 
 function App() {
   return (
@@ -36,6 +37,14 @@ function App() {
         element={
           <ProtectedRoute>
             <Post />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         }
       />

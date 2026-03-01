@@ -86,7 +86,7 @@ export default function Dashboard() {
           <div className="sidebar-avatar">
             <i className="bx bx-user"></i>
           </div>
-          <div className="sidebar-profile-info">
+          <div className="sidebar-profile-info" onClick={() => {navigate("/profile")}}>
             <div className="sidebar-profile-name">{fullName}</div>
             <div className="sidebar-profile-label">Lihat Profil</div>
           </div>
@@ -98,18 +98,22 @@ export default function Dashboard() {
 
           <button
             className={`sidebar-nav-item ${location.pathname === "/dashboard" ? "active" : ""}`}
-            onClick={() => { navigate("/dashboard"); closeSidebar() }}
-          >
+            onClick={() => { navigate("/dashboard"); closeSidebar() }}>
             <i className="bx bx-home-alt-2"></i>
             Dashboard
           </button>
 
           <button
             className={`sidebar-nav-item ${location.pathname === "/posts" ? "active" : ""}`}
-            onClick={() => { navigate("/posts"); closeSidebar() }}
-          >
+            onClick={() => { navigate("/posts"); closeSidebar() }}>
             <i className="bx bx-collection"></i>
             Post
+          </button>
+          <button
+            className={`sidebar-nav-item ${location.pathname === "/profile" ? "active" : ""}`}
+            onClick={() => { navigate("/profile"); closeSidebar() }}>
+            <i className="bx bx-bell"></i>
+            Notification
           </button>
 
         </nav>
@@ -159,7 +163,6 @@ export default function Dashboard() {
 
                 <div className="post-card-body">
                   <h3>{post.title}</h3>
-                  <p>Hub. <span>({phone})</span></p>
                   <p>{post.description}</p>
 
                   <div className="post-meta">
@@ -170,6 +173,10 @@ export default function Dashboard() {
                   <div className="post-meta">
                     <i className="bx bx-category-alt"></i>
                     {post.category}
+                  </div>
+                  <div className="post-meta">
+                    <i className="bx bxs-phone"></i>
+                    {phone}
                   </div>
 
                   <div className="post-badges">
