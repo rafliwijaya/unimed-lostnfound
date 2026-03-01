@@ -22,7 +22,16 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/create-post"
+        element={
+          <ProtectedRoute>
+            <CreatePost />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
+
   )
 }
 
