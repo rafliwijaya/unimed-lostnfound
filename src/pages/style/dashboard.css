@@ -12,7 +12,6 @@
   --sidebar-width: 240px;
 }
 
-/* ── Page Shell ── */
 .dashboard-page {
   min-height: 100vh;
   background-color: var(--background);
@@ -217,17 +216,13 @@
   opacity: 1;
 }
 
-/* ══════════════════════════════
-   MAIN CONTENT
-══════════════════════════════ */
 .dashboard-main {
-  margin-left: var(--sidebar-width);
+  margin-left: 260px;
   flex: 1;
   padding: 40px 36px;
   min-height: 100vh;
 }
 
-/* ── Top Bar ── */
 .dashboard-topbar {
   display: flex;
   align-items: center;
@@ -347,7 +342,6 @@
   box-shadow: 0 16px 40px rgba(26,17,16,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
-/* ── Card Image ── */
 .post-card .post-image {
   width: 100%;
   height: 180px;
@@ -356,7 +350,6 @@
   border-bottom: 1px solid rgba(255,255,255,0.4);
 }
 
-/* ── Card Body ── */
 .post-card-body {
   padding: 20px;
   position: relative;
@@ -497,6 +490,10 @@
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 24px;
+  }
+
+  .sidebar-logout {
+    margin-bottom: 7rem;
   }
 
   .post-grid {
