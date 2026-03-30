@@ -8,7 +8,7 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     let timeout
-    const IDLE_TIMEOUT = 60 * 1000 // 🔥 1 MENIT (TESTING)
+    const IDLE_TIMEOUT = 30 * 60 * 1000
 
     const resetTimer = () => {
       clearTimeout(timeout)
@@ -18,7 +18,14 @@ export default function ProtectedRoute({ children }) {
       }, IDLE_TIMEOUT)
     }
 
-    // Event aktivitas user
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session)
+      
+      if (event === "SIGNED_OUT" || event === "USER_UPDATED") {
+        window.location.href = "/login"
+      }
+    })
+
     window.addEventListener("mousemove", resetTimer)
     window.addEventListener("keydown", resetTimer)
     window.addEventListener("click", resetTimer)
