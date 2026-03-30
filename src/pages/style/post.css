@@ -336,7 +336,7 @@
 
 .panduan-post p {
     font-size: 0.8rem;
-    color: rgba(26,17,16,0.65);
+    color: var(--text_paragraph);
 }
 
 .panduan-post span {

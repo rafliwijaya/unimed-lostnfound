@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-    --primary: #87DB20;
-    --secondary: #A935EB;
-    --text: #1A1110;
-    --background: #ffffff;
-    --antagonist: #a91c3d;
+  --primary: #87DB20;
+  --primarydua: #609b17;
+  --secondary: #A935EB;
+  --text: #1A1110;
+  --background: #ffffff;
+  --antagonist: #a91c3d;
+  --text_paragraph: rgba(26,17,16,0.65);
 
-    --glass-bg: rgba(255, 255, 240, 0.45);
+  --glass-bg: rgba(255, 255, 240, 0.45);
   --glass-border: rgba(255, 255, 255, 0.6);
   --glass-shadow: 0 8px 32px rgba(26, 17, 16, 0.08);
   --glass-blur: blur(20px);
@@ -25,7 +27,8 @@
   font-family: 'Poppins', sans-serif;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: var(--background);
