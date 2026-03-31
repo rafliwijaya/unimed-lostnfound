@@ -66,58 +66,68 @@ export default function Register() {
   }
 
   return (
-    <div style={{ maxWidth: "400px", margin: "100px auto" }}>
-      <h2>Register</h2>
+    <div className="login-root">
+      <div className="login-card">
 
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <div className="login-eyebrow">
+          <span className="login-eyebrow-dot" />
+          Portal Kampus
+        </div>
 
-        <br /><br />
+<h1 className="login-title">Selamat <span>Datang</span></h1>
 
-        <input
-          type="tel"
-          placeholder="Phone Number"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
 
-        <br /><br />
 
-        <input
-          type="email"
-          placeholder="Email @univ.ac.id"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <form onSubmit={handleRegister}>
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
 
-        <br /><br />
+          <br /><br />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
 
-        <br /><br />
+          <br /><br />
 
-        <button onClick={() => navigate("/login")}>
-          Sudah punya akun?
-        </button>
-        <button type="submit" disabled={loading}>
-          {loading ? "Loading..." : "Register"}
-        </button>
-      </form>
+          <input
+            type="email"
+            placeholder="Email @univ.ac.id"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+          <br /><br />
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <br /><br />
+
+          <button onClick={() => navigate("/login")}>
+            Sudah punya akun?
+          </button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Loading..." : "Register"}
+          </button>
+        </form>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </div>
     </div>
   )
 }
