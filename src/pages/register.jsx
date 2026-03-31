@@ -74,9 +74,18 @@ export default function Register() {
           Portal Kampus
         </div>
 
-<h1 className="login-title">Selamat <span>Datang</span></h1>
+        <h1 className="login-title">Selamat <span>Datang</span></h1>
+        <p className="login-subtitle">Daftar menggunakan akun <span>Unimed</span> anda</p>
+        {error && (
+          <div className="login-error">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+            </svg>
+            {error}
+          </div>
+        )}
 
-
+        
 
         <form onSubmit={handleRegister}>
           <input
