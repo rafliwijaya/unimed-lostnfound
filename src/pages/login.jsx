@@ -64,7 +64,7 @@ export default function Login() {
                 id="email"
                 type="email"
                 className="login-input"
-                placeholder="nama@unimed.ac.id"
+                placeholder="nama@mhs.unimed.ac.id"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -86,7 +86,7 @@ export default function Login() {
                 id="password"
                 type="password"
                 className="login-input"
-                placeholder="Masukkan password"
+                placeholder="Masukkan Kata Sandi Anda"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
