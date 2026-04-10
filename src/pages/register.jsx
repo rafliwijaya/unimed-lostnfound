@@ -76,7 +76,7 @@ export default function Register() {
         </div>
 
         <h1 className="login-title">Selamat <span>Datang</span></h1>
-        <p className="login-subtitle">Daftar menggunakan akun <span>Unimed</span> anda</p>
+        <p className="login-subtitle">Silakan daftar menggunakan akun <span>Unimed</span> anda</p>
         {error && (
           <div className="login-error">
             <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
@@ -86,105 +86,107 @@ export default function Register() {
           </div>
         )}
 
-        
+        <form onSubmit={handleRegister}>
 
-      <form onSubmit={handleRegister}>
-
-        <div className="login-field">
-         <input
-            type="text"
-            placeholder="Nama Lengkap"
-            className="login-input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <span className="login-input-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </span>
-        </div>
-
-        <div className="login-field">
-          <input
-            type="tel"
-            placeholder="Nomor Telepon/Whatsapp"
-            className="login-input"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <span className="login-input-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-              <path d="M12 18h.01" />
-            </svg>
-          </span>
-        </div>
-
-        <div className="login-field">
-          <input
-            type="email"
-            placeholder="Email@mhs.unimed.ac.id"
-            className="login-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <span className="login-input-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
-          </span>
-        </div>
-
-        <div className="login-field">
-          <input
-            type="password"
-            placeholder="Kata Sandi"
-            className="login-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <span className="login-input-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-          </span>
-        </div>
-
-          <button type="submit" className="login-btn" disabled={loading}>
-            <span className="login-btn-inner">
-              {loading && <span className="login-spinner" />}
-              {loading ? "Loading..." : "Daftar"}
+          <label className="login-label" htmlFor="name">Nama Lengkap</label>
+          <div className="login-field">
+            <input
+              type="text"
+              placeholder="Nama Lengkap"
+              className="login-input"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            <span className="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
             </span>
-          </button>
-
-          <br /><br />
-
-          <p className="login-register">
-            Sudah punya akun?{" "}
-            <span
-              className="login-register-link"
-              onClick={() => navigate("/login")}
-              role="link"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === "Enter" && navigate("/login")}
-            >
-              Masuk
-            </span>
-          </p>
-
-          <div className="login-badge">
-            <span className="login-badge-dot" />
-            Universitas Negeri Medan
-            <span className="login-badge-dot" />
           </div>
-          
+
+          <label className="login-label" htmlFor="phone">Nomor Telepon/Whatsapp</label>
+          <div className="login-field">
+            <input
+              type="tel"
+              placeholder="Nomor Telepon/Whatsapp"
+              className="login-input"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <span className="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg>
+            </span>
+          </div>
+
+          <label className="login-label" htmlFor="email">Email</label>
+          <div className="login-field">
+            <input
+              type="email"
+              placeholder="Email@mhs.unimed.ac.id"
+              className="login-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <span className="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </span>
+          </div>
+
+          <label className="login-label" htmlFor="password">Kata Sandi</label>
+          <div className="login-field">
+            <input
+              type="password"
+              placeholder="Kata Sandi"
+              className="login-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <span className="login-input-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </span>
+          </div>
+
+            <button type="submit" className="login-btn" disabled={loading}>
+              <span className="login-btn-inner">
+                {loading && <span className="login-spinner" />}
+                {loading ? "Loading..." : "Daftar"}
+              </span>
+            </button>
+
+            <br /><br />
+
+            <p className="login-register">
+              Sudah punya akun?{" "}
+              <span
+                className="login-register-link"
+                onClick={() => navigate("/login")}
+                role="link"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && navigate("/login")}
+              >
+                Masuk
+              </span>
+            </p>
+
+            <div className="login-badge">
+              <span className="login-badge-dot" />
+              Universitas Negeri Medan
+              <span className="login-badge-dot" />
+            </div>
+            
         </form>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
