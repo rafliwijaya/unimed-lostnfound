@@ -80,7 +80,7 @@ export default function Login() {
           </div>
 
           <div className="login-field">
-            <label className="login-label" htmlFor="password">Password</label>
+            <label className="login-label" htmlFor="password">Kata Sandi</label>
             <div className="login-input-wrap">
               <input
                 id="password"
