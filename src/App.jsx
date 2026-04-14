@@ -6,6 +6,7 @@ import ProtectedRoute from "./pages/protectedroute"
 import CreatePost from "./pages/create_post"
 import Post from "./pages/post"
 import Profile from "./pages/profile"
+import EditPost from "./pages/edit_post"
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/create-post" element={<CreatePost />} />
+      <Route 
+        path="/EditPost/:id" 
+        element={<EditPost />} 
+      />
 
       <Route
         path="/dashboard"
@@ -48,6 +53,8 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      
     </Routes>
 
   )

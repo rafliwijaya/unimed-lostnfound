@@ -127,9 +127,8 @@ function CreatePost() {
                   required
                 >
                   <option value="" disabled>Pilih Status</option>
-                  <option value="open">Open</option>
-                  <option value="claimed">Claimed</option>
-                  <option value="resolved">Resolved</option>
+                  <option value="Terbuka">Terbuka</option>
+                  <option value="Diklaim">Diklaim</option>
                 </select>
                 <i className="bx bx-chevron-down select-arrow"></i>
               </div>
@@ -144,8 +143,8 @@ function CreatePost() {
                   required
                 >
                   <option value="" disabled>Pilih Type</option>
-                  <option value="lost">Lost / Kehilangan</option>
-                  <option value="found">Found / Ditemukan</option>
+                  <option value="Kehilangan">Lost / Kehilangan</option>
+                  <option value="Ditemukan">Found / Ditemukan</option>
                 </select>
                 <i className="bx bx-chevron-down select-arrow"></i>
               </div>
