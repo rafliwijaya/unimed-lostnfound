@@ -5,7 +5,6 @@ import "./style/style.css"
 import "./style/dashboard.css"
 import "boxicons/css/boxicons.min.css"
 
-
 export default function Dashboard() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -14,6 +13,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [fullName, setFullName] = useState("")
+  const [deleteModal, setDeleteModal] = useState({ open: false, postId: null })
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -22,28 +22,21 @@ export default function Dashboard() {
 
   const fetchPosts = async () => {
     const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return
 
-    if (!user) {
-      console.error("User tidak ditemukan")
-      return
-    }
     const { data, error } = await supabase
       .from("posts")
       .select("*")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false })
 
-    if (error) {
-      console.error(error.message)
-    } else {
-      setPosts(data)
-    }
+    if (error) console.error(error.message)
+    else setPosts(data)
     setLoading(false)
   }
 
   const fetchUserData = async () => {
     const { data: { user } } = await supabase.auth.getUser()
-
     if (user) {
       const { data, error } = await supabase
         .from("users")
@@ -51,12 +44,24 @@ export default function Dashboard() {
         .eq("id", user.id)
         .single()
 
-      if (error) {
-        console.error(error.message)
-      } else {
-        setFullName(data.full_name)
-      }
+      if (error) console.error(error.message)
+      else setFullName(data.full_name)
     }
+  }
+
+  // ✅ Fungsi delete
+  const handleDelete = async () => {
+    const { error } = await supabase
+      .from("posts")
+      .delete()
+      .eq("id", deleteModal.postId)
+
+    if (error) {
+      console.error(error.message)
+    } else {
+      setPosts((prev) => prev.filter((p) => p.id !== deleteModal.postId))
+    }
+    setDeleteModal({ open: false, postId: null })
   }
 
   useEffect(() => {
@@ -69,6 +74,26 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
 
+      {/* ✅ Modal konfirmasi delete */}
+      {deleteModal.open && (
+        <div className="modal-backdrop" onClick={() => setDeleteModal({ open: false, postId: null })}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <h3>Hapus post ini?</h3>
+            <p>Post yang dihapus tidak bisa dikembalikan. Yakin mau lanjut?</p>
+            <div className="modal-actions">
+              <button
+                className="btn-modal-cancel"
+                onClick={() => setDeleteModal({ open: false, postId: null })}>
+                Batal
+              </button>
+              <button className="btn-modal-delete" onClick={handleDelete}>
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
         <i className={`bx ${sidebarOpen ? "bx-x" : "bx-menu"}`}></i>
       </button>
@@ -79,18 +104,15 @@ export default function Dashboard() {
       />
 
       <aside className={`dashboard-sidebar ${sidebarOpen ? "open" : ""}`}>
-
         <div className="sidebar-logo">
-          Unimed <span>Lost</span> & <span>Found</span>
+          UNIMED <span>Lost</span> & <span>Found</span>
         </div>
 
-        <div
-          className="sidebar-profile"
-          onClick={() => { navigate("/profil"); closeSidebar() }}>
+        <div className="sidebar-profile" onClick={() => { navigate("/profil"); closeSidebar() }}>
           <div className="sidebar-avatar">
             <i className="bx bx-user"></i>
           </div>
-          <div className="sidebar-profile-info" onClick={() => { navigate("/dashboard")}}>
+          <div className="sidebar-profile-info" onClick={() => { navigate("/dashboard") }}>
             <div className="sidebar-profile-name">{fullName}</div>
             <div className="sidebar-profile-label">Lihat Profil</div>
           </div>
@@ -99,38 +121,33 @@ export default function Dashboard() {
         <hr className="sidebar-divider" />
 
         <nav className="sidebar-nav">
-
           <button
             className={`sidebar-nav-item ${location.pathname === "/dashboard" ? "active" : ""}`}
             onClick={() => { navigate("/dashboard"); closeSidebar() }}>
             <i className="bx bx-home-alt-2"></i>
-            Dashboard
+            Beranda
           </button>
-
           <button
             className={`sidebar-nav-item ${location.pathname === "/posts" ? "active" : ""}`}
             onClick={() => { navigate("/posts"); closeSidebar() }}>
             <i className="bx bx-collection"></i>
-            Post
+            Post Barang
           </button>
           <button
             className={`sidebar-nav-item ${location.pathname === "/profile" ? "active" : ""}`}
             onClick={() => { navigate("/profile"); closeSidebar() }}>
             <i className="bx bx-bell"></i>
-            Notification
+            Notifikasi
           </button>
-
         </nav>
 
         <button className="sidebar-logout" onClick={handleLogout}>
           <i className="bx bx-log-out"></i>
-          Log Out
+          Keluar
         </button>
-
       </aside>
 
       <main className="dashboard-main">
-
         <div className="dashboard-topbar">
           <div>
             <h1>Dashboard</h1>
@@ -158,11 +175,7 @@ export default function Dashboard() {
               <div key={post.id} className="post-card">
 
                 {post.image_url && (
-                  <img
-                    src={post.image_url}
-                    alt={post.title}
-                    className="post-image"
-                  />
+                  <img src={post.image_url} alt={post.title} className="post-image" />
                 )}
 
                 <div className="post-card-body">
@@ -173,19 +186,29 @@ export default function Dashboard() {
                     <i className="bx bx-map"></i>
                     {post.location}
                   </div>
-
                   <div className="post-meta">
                     <i className="bx bx-category-alt"></i>
                     {post.category}
                   </div>
 
                   <div className="post-badges">
-                    <span className={`badge badge-status-${post.status}`}>
-                      {post.status}
-                    </span>
-                    <span className={`badge badge-type-${post.type}`}>
-                      {post.type}
-                    </span>
+                    <span className={`badge badge-status-${post.status}`}>{post.status}</span>
+                    <span className={`badge badge-type-${post.type}`}>{post.type}</span>
+                  </div>
+
+                  <div className="post-card-actions">
+                    <button
+                      className="btn-edit"
+                      onClick={() => navigate(`/EditPost/${post.id}`)}>
+                      <i className="bx bx-edit-alt"></i>
+                      Edit
+                    </button>
+                    <button
+                      className="btn-delete"
+                      onClick={() => setDeleteModal({ open: true, postId: post.id })}>
+                      <i className="bx bx-trash"></i>
+                      Hapus
+                    </button>
                   </div>
                 </div>
 
@@ -193,7 +216,6 @@ export default function Dashboard() {
             ))}
           </div>
         )}
-
       </main>
     </div>
   )

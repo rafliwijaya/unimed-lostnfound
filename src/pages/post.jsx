@@ -102,9 +102,15 @@ export default function Posts() {
 
   const fetchPosts = async () => {
     const { data, error } = await supabase
-      .from("posts")
-      .select("*")
-      .order("created_at", { ascending: false })
+  .from("posts")
+  .select(`
+    *,
+    users (
+      full_name,
+      phone
+    )
+  `)
+  .order("created_at", { ascending: false })
 
     if (error) {
       console.error(error.message)
@@ -336,7 +342,7 @@ export default function Posts() {
 
                   <div className="post-meta">
                     <i className="bx bxs-phone"></i>
-                    {phone}
+                    {post.users?.phone || "Tidak tersedia"}
                   </div>
 
                   <div className="post-badges">

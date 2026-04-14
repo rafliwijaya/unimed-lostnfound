@@ -383,12 +383,12 @@
   letter-spacing: 0.3px;
 }
 
-.badge-status-open     { background: rgba(135,219,32,0.15); color: #4a8a00; border: 1px solid rgba(135,219,32,0.3); }
-.badge-status-claimed  { background: rgba(169,53,235,0.12); color: #7a1fb0; border: 1px solid rgba(169,53,235,0.25); }
-.badge-status-resolved { background: rgba(26,17,16,0.07);  color: rgba(26,17,16,0.5); border: 1px solid rgba(26,17,16,0.12); }
+.badge-status-Terbuka     { background: rgba(135,219,32,0.15); color: #4a8a00; border: 1px solid rgba(135,219,32,0.3); }
+.badge-status-Diklaim  { background: rgba(169,53,235,0.12); color: #7a1fb0; border: 1px solid rgba(169,53,235,0.25); }
+.badge-status-Resolved { background: rgba(26,17,16,0.07);  color: rgba(26,17,16,0.5); border: 1px solid rgba(26,17,16,0.12); }
 
-.badge-type-lost  { background: rgba(169,28,61,0.09); color: var(--antagonist); border: 1px solid rgba(169,28,61,0.2); }
-.badge-type-found { background: rgba(135,219,32,0.12); color: #4a8a00; border: 1px solid rgba(135,219,32,0.25); }
+.badge-type-Kehilangan  { background: rgba(169,28,61,0.09); color: var(--antagonist); border: 1px solid rgba(169,28,61,0.2); }
+.badge-type-Ditemukan { background: rgba(135,219,32,0.12); color: #4a8a00; border: 1px solid rgba(135,219,32,0.25); }
 
 /* ── Meta row (lokasi, kategori) ── */
 .post-meta {
@@ -623,4 +623,111 @@
   .dashboard-main {
     padding: 72px 14px 24px 14px;
   }
+}
+
+/* Tombol edit & delete di post card */
+.post-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-edit,
+.btn-delete {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+  transition: background 0.15s;
+}
+
+.btn-edit:hover {
+  background: #f3f4f6;
+}
+
+.btn-delete {
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
+.btn-delete:hover {
+  background: #fef2f2;
+}
+
+/* Modal konfirmasi */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.modal-box h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.modal-box p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-modal-cancel {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-modal-cancel:hover {
+  background: #f3f4f6;
+}
+
+.btn-modal-delete {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #dc2626;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-modal-delete:hover {
+  background: #b91c1c;
 }
