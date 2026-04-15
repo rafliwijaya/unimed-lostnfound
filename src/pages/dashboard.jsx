@@ -74,7 +74,7 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
 
-      {/* ✅ Modal konfirmasi delete */}
+      /* konfirmasi delete */
       {deleteModal.open && (
         <div className="modal-backdrop" onClick={() => setDeleteModal({ open: false, postId: null })}>
           <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -150,7 +150,7 @@ export default function Dashboard() {
       <main className="dashboard-main">
         <div className="dashboard-topbar">
           <div>
-            <h1>Dashboard</h1>
+            <h1>Beranda</h1>
             <p className="dashboard-topbar-subtitle">Kelola semua laporan barang hilang & temuan milikmu</p>
           </div>
           <button className="btn-create" onClick={() => navigate("/create-post")}>
