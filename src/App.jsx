@@ -7,19 +7,19 @@ import CreatePost from "./pages/create_post"
 import Post from "./pages/post"
 import Profile from "./pages/profile"
 import EditPost from "./pages/edit_post"
+import Notification from "./pages/notification"
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
-
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/create-post" element={<CreatePost />} />
-      <Route 
-        path="/EditPost/:id" 
-        element={<EditPost />} 
-      />
+      <Route path="/EditPost/:id" element={<EditPost />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/notification" element={<Notification />} />
+      
 
       <Route
         path="/dashboard"

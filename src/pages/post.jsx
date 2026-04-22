@@ -188,17 +188,14 @@ export default function Posts() {
       <aside className={`dashboard-sidebar ${sidebarOpen ? "open" : ""}`}>
 
         <div className="sidebar-logo">
-          Unimed <span>Lost</span> & <span>Found</span>
+          UNIMED <span>Lost</span> & <span>Found</span>
         </div>
 
-        <div
-          className="sidebar-profile"
-          onClick={() => { navigate("/profil"); closeSidebar() }}
-        >
+        <div className="sidebar-profile" onClick={() => { navigate("/profile"); closeSidebar() }}>
           <div className="sidebar-avatar">
             <i className="bx bx-user"></i>
           </div>
-          <div className="sidebar-profile-info" onClick={() => { navigate("/profile") }}>
+          <div className="sidebar-profile-info" onClick={() => { navigate("/dashboard") }}>
             <div className="sidebar-profile-name">{fullName}</div>
             <div className="sidebar-profile-label">Lihat Profil</div>
           </div>
@@ -212,28 +209,28 @@ export default function Posts() {
             className={`sidebar-nav-item ${location.pathname === "/dashboard" ? "active" : ""}`}
             onClick={() => { navigate("/dashboard"); closeSidebar() }}>
             <i className="bx bx-home-alt-2"></i>
-            Dashboard
+            Beranda
           </button>
 
           <button
             className={`sidebar-nav-item ${location.pathname === "/posts" ? "active" : ""}`}
             onClick={() => { navigate("/posts"); closeSidebar() }}>
             <i className="bx bx-collection"></i>
-            Post
+            Post Barang
           </button>
 
           <button
-            className={`sidebar-nav-item ${location.pathname === "/profile" ? "active" : ""}`}
-            onClick={() => { navigate("/profile"); closeSidebar() }}>
+            className={`sidebar-nav-item ${location.pathname === "/notification" ? "active" : ""}`}
+            onClick={() => { navigate("/notification"); closeSidebar() }}>
             <i className="bx bx-bell"></i>
-            Notification
+            Notifikasi
           </button>
 
         </nav>
 
         <button className="sidebar-logout" onClick={handleLogout}>
           <i className="bx bx-log-out"></i>
-          Log Out
+          Keluar
         </button>
 
       </aside>
@@ -242,7 +239,7 @@ export default function Posts() {
 
         <div className="dashboard-topbar">
           <div>
-            <h1>Post</h1>
+            <h1>Post Barang</h1>
             <p className="dashboard-topbar-subtitle">Temukan barang kamu disini</p>
           </div>
           <button className="btn-create" onClick={() => navigate("/create-post")}>
