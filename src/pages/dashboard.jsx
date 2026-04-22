@@ -49,7 +49,7 @@ export default function Dashboard() {
     }
   }
 
-  // ✅ Fungsi delete
+  // Fungsi delete
   const handleDelete = async () => {
     const { error } = await supabase
       .from("posts")
@@ -74,26 +74,6 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
 
-      /* konfirmasi delete */
-      {deleteModal.open && (
-        <div className="modal-backdrop" onClick={() => setDeleteModal({ open: false, postId: null })}>
-          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-            <h3>Hapus post ini?</h3>
-            <p>Post yang dihapus tidak bisa dikembalikan. Yakin mau lanjut?</p>
-            <div className="modal-actions">
-              <button
-                className="btn-modal-cancel"
-                onClick={() => setDeleteModal({ open: false, postId: null })}>
-                Batal
-              </button>
-              <button className="btn-modal-delete" onClick={handleDelete}>
-                Hapus
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       <button className="sidebar-toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
         <i className={`bx ${sidebarOpen ? "bx-x" : "bx-menu"}`}></i>
       </button>
@@ -108,7 +88,7 @@ export default function Dashboard() {
           UNIMED <span>Lost</span> & <span>Found</span>
         </div>
 
-        <div className="sidebar-profile" onClick={() => { navigate("/profil"); closeSidebar() }}>
+        <div className="sidebar-profile" onClick={() => { navigate("/profile"); closeSidebar() }}>
           <div className="sidebar-avatar">
             <i className="bx bx-user"></i>
           </div>
@@ -134,8 +114,8 @@ export default function Dashboard() {
             Post Barang
           </button>
           <button
-            className={`sidebar-nav-item ${location.pathname === "/profile" ? "active" : ""}`}
-            onClick={() => { navigate("/profile"); closeSidebar() }}>
+            className={`sidebar-nav-item ${location.pathname === "/notification" ? "active" : ""}`}
+            onClick={() => { navigate("/notification"); closeSidebar() }}>
             <i className="bx bx-bell"></i>
             Notifikasi
           </button>
@@ -158,7 +138,7 @@ export default function Dashboard() {
             Buat Post
           </button>
         </div>
-
+        
         {loading ? (
           <div className="dashboard-state">
             <i className="bx bx-loader-alt bx-spin"></i>
@@ -217,6 +197,26 @@ export default function Dashboard() {
           </div>
         )}
       </main>
+
+      {deleteModal.open && (
+        <div className="modal-backdrop" onClick={() => setDeleteModal({ open: false, postId: null })}>
+          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+            <h3>Hapus post ini?</h3>
+            <p>Post yang dihapus tidak bisa dikembalikan. Yakin mau lanjut?</p>
+            <div className="modal-actions">
+              <button
+                className="btn-modal-cancel"
+                onClick={() => setDeleteModal({ open: false, postId: null })}>
+                Batal
+              </button>
+              <button className="btn-modal-delete" onClick={handleDelete}>
+                Hapus
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }

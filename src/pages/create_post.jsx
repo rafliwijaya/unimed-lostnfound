@@ -154,7 +154,7 @@ function CreatePost() {
               <i className="bx bx-map input-icon"></i>
               <input
                 type="text"
-                placeholder="Lokasi"
+                placeholder="Lokasi Terakhir Barang Kehilangan atau Ditemukan"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 required
@@ -199,9 +199,9 @@ function CreatePost() {
           <p><span>Judul Barang</span>: Informasi utama barang Mis. dompet, kunci motor, ktp, tas, charger, jaket dsb.</p>
           <p><span>Deskripsi</span>: Berisi informasi atau spesifikasi lengkap dari barang bersangkutan. Mis. Dompet berisi uang tunai 200 ribu dengan ktp bernama Fulan Al Fulani.</p>
           <p><span>Kategori</span>: Mis. Elektronik, dokumen, tas, buku, pakaian, aksesoris dsb.</p>
-          <p><span>Status</span>: Default <span>Open</span></p>
-          <p><span>Type</span>: <span>Lost</span> untuk barang kehilangan. <span>Found</span> untuk barang temuan. Jika anda menemukan barang maka gunakan opsi <span>Post</span></p>
-          <p><span>Lokasi</span>: Lokasi terakhir dari barang bersangkutan</p>
+          <p><span>Status</span>: Default <span>Terbuka</span>, artinya barang masih dalam proses pencarian, status <span>Diklaim</span> hanya untuk barang yang dikonfirmasi sudah diterima pemilik barang.</p>
+          <p><span>Type</span>: <span>Lost</span> untuk barang kehilangan. <span>Found</span> untuk barang temuan. Jika anda menemukan barang maka gunakan opsi <span>Found</span></p>
+          <p><span>Lokasi</span>: Lokasi terakhir barang kehilangan atau ditemukan dari yang bersangkutan</p>
           <p><span>Foto</span>: Visual dari barang yang hilang atau barang temuan</p>
         </div>
 
