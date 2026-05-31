@@ -47,9 +47,9 @@ function extractKeywords(text) {
 }
 
 function getMatchedKeywords(lostPost, foundPost) {
-  const lostText = [lostPost.title, lostPost.description, lostPost.location, lostPost.category]
+  const lostText = [lostPost.title, lostPost.description]
     .filter(Boolean).join(" ")
-  const foundText = [foundPost.title, foundPost.description, foundPost.location, foundPost.category]
+  const foundText = [foundPost.title, foundPost.description]
     .filter(Boolean).join(" ")
 
   const keywords = extractKeywords(lostText)
