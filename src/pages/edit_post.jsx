@@ -20,8 +20,8 @@ export default function EditPost() {
     description: "",
     location: "",
     category: "",
-    status: "open",
-    type: "hilang",
+    status: "Terbuka",
+    type: "Kehilangan",
     image_url: "",
   })
 
@@ -40,8 +40,8 @@ export default function EditPost() {
         description: data.description || "",
         location: data.location || "",
         category: data.category || "",
-        status: data.status || "open",
-        type: data.type || "hilang",
+        status: data.status || "Terbuka",
+        type: data.type || "Kehilangan",
         image_url: data.image_url || "",
       })
       if (data.image_url && data.image_url.trim() !== "")  {
@@ -249,16 +249,16 @@ export default function EditPost() {
             <div className="form-group">
               <label htmlFor="type">Tipe</label>
               <select id="type" name="type" value={form.type} onChange={handleChange}>
-                <option value="lost">Hilang</option>
-                <option value="found">Temuan</option>
+                <option value="Kehilangan">Kehilangan</option>
+                <option value="Ditemukan">Ditemukan</option>
               </select>
             </div>
 
             <div className="form-group">
               <label htmlFor="status">Status</label>
               <select id="status" name="status" value={form.status} onChange={handleChange}>
-                <option value="open">Terbuka</option>
-                <option value="claimed">Diklaim</option>
+                <option value="Terbuka">Terbuka</option>
+                <option value="Diklaim">Diklaim</option>
               </select>
             </div>
           </div>

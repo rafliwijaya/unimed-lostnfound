@@ -379,7 +379,7 @@ export default function Posts() {
                       {post.type}
                     </span>
                   </div>
-                  {post.users?.phone && (
+                  {post.users?.phone && post.status !== "Diklaim" && (
                     <button
                       className="btn-tanya-barang"
                       onClick={() => handleTanyaBarang(post.users.phone, post.title)}

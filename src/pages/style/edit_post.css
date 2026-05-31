@@ -85,7 +85,7 @@
 .editpost-form {
   background: white;
   border-radius: 14px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--primary);
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@
 }
 
 .image-upload-area:hover {
-  border-color: #6366f1;
+  border-color: var(--primary);
 }
 
 .image-placeholder {
@@ -235,7 +235,7 @@
   padding: 11px 0;
   border-radius: 8px;
   border: none;
-  background: #6ac010;
+  background: var(--primary);
   color: white;
   font-size: 14px;
   font-weight: 500;
@@ -248,7 +248,7 @@
 }
 
 .btn-save:hover {
-  background: #4338ca;
+  background: var(--primarydua);
 }
 
 .btn-save:disabled {

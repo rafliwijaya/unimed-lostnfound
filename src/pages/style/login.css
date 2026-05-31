@@ -307,3 +307,22 @@
     font-size: 27px;
   }
 }
+
+.login-toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.login-toggle-password:hover {
+  color: #374151;
+}

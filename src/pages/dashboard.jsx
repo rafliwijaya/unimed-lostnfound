@@ -90,6 +90,18 @@ export default function Dashboard() {
 
   const closeSidebar = () => setSidebarOpen(false)
 
+  const formatTimestamp = (dateStr) => {
+  const date = new Date(dateStr)
+  return date.toLocaleString("id-ID", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  })
+}
+
   return (
     <div className="dashboard-page">
 
@@ -210,15 +222,20 @@ export default function Dashboard() {
                     </button>
                   </div>
                   {post.type === "Ditemukan" && post.status !== "Diklaim" && (
-                      <button
-                        className="btn-claimed"
-                        onClick={() => handleClaimed(post.id)}>
-                        <i className="bx bx-check-double"></i>
-                        Tandai Diklaim
-                      </button>
-                    )}
-                </div>
+                    <button
+                      className="btn-claimed"
+                      onClick={() => handleClaimed(post.id)}>
+                      <i className="bx bx-check-double"></i>
+                      Tandai Diklaim
+                    </button>
+                  )}
 
+                  <div className="post-timestamp">
+                    <i className="bx bx-time-five"></i>
+                    {formatTimestamp(post.created_at)}
+                  </div>
+                  
+                </div>
               </div>
             ))}
           </div>
