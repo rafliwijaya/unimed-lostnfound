@@ -44,7 +44,7 @@ export default function EditPost() {
         type: data.type || "hilang",
         image_url: data.image_url || "",
       })
-      if (data.image_url && data.image_url.trimp() !== "")  {
+      if (data.image_url && data.image_url.trim() !== "")  {
         setImagePreview(data.image_url || null)
       }
     }
