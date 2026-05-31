@@ -64,6 +64,25 @@ export default function Dashboard() {
     setDeleteModal({ open: false, postId: null })
   }
 
+  const handleClaimed = async (postId) => {
+    const konfirmasi = window.confirm("Tandai barang ini sudah diambil pemiliknya?")
+    if (!konfirmasi) return
+
+    const { error } = await supabase
+      .from("posts")
+      .update({
+        status: "Diklaim",
+        claimed_at: new Date().toISOString(),
+      })
+      .eq("id", postId)
+
+    if (error) {
+      alert("Gagal menandai: " + error.message)
+    } else {
+      fetchPosts()
+    }
+  }
+
   useEffect(() => {
     fetchPosts()
     fetchUserData()
@@ -190,6 +209,14 @@ export default function Dashboard() {
                       Hapus
                     </button>
                   </div>
+                  {post.type === "Ditemukan" && post.status !== "Diklaim" && (
+                      <button
+                        className="btn-claimed"
+                        onClick={() => handleClaimed(post.id)}>
+                        <i className="bx bx-check-double"></i>
+                        Tandai Diklaim
+                      </button>
+                    )}
                 </div>
 
               </div>

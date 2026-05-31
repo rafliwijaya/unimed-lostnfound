@@ -12,7 +12,7 @@ function CreatePost() {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [category, setCategory] = useState("")
-  const [status, setStatus] = useState("")
+  const [status, setStatus] = useState("Terbuka")
   const [type, setType] = useState("")
   const [image, setImage] = useState(null)
   const [location, setLocation] = useState("")
@@ -128,7 +128,6 @@ function CreatePost() {
                 >
                   <option value="" disabled>Pilih Status</option>
                   <option value="Terbuka">Terbuka</option>
-                  <option value="Diklaim">Diklaim</option>
                 </select>
                 <i className="bx bx-chevron-down select-arrow"></i>
               </div>
