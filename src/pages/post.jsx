@@ -87,6 +87,7 @@ export default function Posts() {
   const [loading, setLoading] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [fullName, setFullName] = useState("")
+  const [currentUserId, setCurrentUserId] = useState(null)
   const [phone, setPhone] = useState("")
 
   const [searchQuery, setSearchQuery] = useState("")
@@ -125,6 +126,7 @@ export default function Posts() {
     const { data: { user } } = await supabase.auth.getUser()
 
     if (user) {
+      setCurrentUserId(user.id)
       const { data, error } = await supabase
         .from("users")
         .select("full_name, phone")
@@ -144,6 +146,25 @@ export default function Posts() {
     fetchPosts()
     fetchUserData()
   }, [])
+
+  const handleClaimed = async (postId) => {
+    const konfirmasi = window.confirm("Tandai barang ini sudah diambil pemiliknya?")
+    if (!konfirmasi) return
+
+    const { error } = await supabase
+      .from("posts")
+      .update({
+        status: "Diklaim",
+        claimed_at: new Date().toISOString(),
+      })
+      .eq("id", postId)
+
+    if (error) {
+      alert("Gagal menandai: " + error.message)
+    } else {
+      fetchPosts() // refresh list
+    }
+  }
 
   const handleSearch = () => {
     const query = searchQuery.trim()
@@ -172,6 +193,34 @@ export default function Posts() {
   }
 
   const closeSidebar = () => setSidebarOpen(false)
+
+  const formatWhatsAppNumber = (phone) => {
+    let number = phone.replace(/\D/g, "")
+    if (number.startsWith("0")) number = "62" + number.slice(1)
+    return number
+  }
+
+  const handleTanyaBarang = (phone, title) => {
+    if (!phone) return
+    const number = formatWhatsAppNumber(phone)
+    const message = encodeURIComponent(
+      `Halo, saya ingin bertanya mengenai barang *${title}* yang ada di UNIMED Lost & Found. Apakah barang ini masih ada?`
+    )
+    window.open(`https://wa.me/${number}?text=${message}`, "_blank")
+  }
+
+  const formatTimestamp = (dateStr) => {
+  const date = new Date(dateStr)
+  return date.toLocaleString("id-ID", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  })
+}
 
   return (
     <div className="dashboard-page">
@@ -350,8 +399,40 @@ export default function Posts() {
                       {post.type}
                     </span>
                   </div>
-                </div>
+                  {post.users?.phone && (
+                    <button
+                      className="btn-tanya-barang"
+                      onClick={() => handleTanyaBarang(post.users.phone, post.title)}
+                    >
+                      <i className="bx bxl-whatsapp"></i>
+                      Tanya Barang
+                    </button>
+                  )}
 
+                  <div className="post-timestamp">
+                    <i className="bx bx-time-five"></i>
+                    {formatTimestamp(post.created_at)}
+                  </div>
+
+                  {post.user_id === currentUserId &&
+                   post.type === "Ditemukan" &&
+                   post.status !== "Diklaim" && (
+                    <button
+                      className="btn-claimed"
+                      onClick={() => handleClaimed(post.id)}
+                    >
+                      <i className="bx bx-check-double"></i>
+                      Tandai Diklaim
+                    </button>
+                  )}
+
+                  {post.status === "Diklaim" && (
+                    <div className="claimed-info">
+                      <i className="bx bx-check-circle"></i>
+                      Barang ini sudah diklaim oleh pemiliknya
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
